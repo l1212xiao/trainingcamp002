@@ -1,27 +1,32 @@
 package class02;
-
+/*
+给定一个正整数组成的无序数组arr，给定一个正整数值K
+找到arr的所有子数组里，哪个子数组的累加和等于K，并且是长度最大的
+返回其长度
+ */
 public class Code01_LongestSumSubArrayLengthInPositiveArray {
 
 	public static int getMaxLength(int[] arr, int K) {
 		if (arr == null || arr.length == 0 || K <= 0) {
 			return 0;
 		}
+		// [left,right]
 		int left = 0;
 		int right = 0;
-		int sum = arr[0];
+		int windowSum = arr[0];
 		int len = 0;
 		while (right < arr.length) {
-			if (sum == K) {
+			if (windowSum == K) {
 				len = Math.max(len, right - left + 1);
-				sum -= arr[left++];
-			} else if (sum < K) {
+				windowSum -= arr[left++];
+			} else if (windowSum < K) {
 				right++;
 				if (right == arr.length) {
 					break;
 				}
-				sum += arr[right];
+				windowSum += arr[right];
 			} else {
-				sum -= arr[left++];
+				windowSum -= arr[left++];
 			}
 		}
 		return len;

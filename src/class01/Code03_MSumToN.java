@@ -1,5 +1,15 @@
 package class01;
 
+/*
+定义一种数：可以表示成若干（数量>1）连续正数和的数
+比如:
+5 = 2+3，5就是这样的数
+12 = 3+4+5，12就是这样的数
+1不是这样的数，因为要求数量大于1个、连续正数和
+2 = 1 + 1，2也不是，因为等号右边不是连续正数
+给定一个参数N，返回是不是可以表示成若干连续正数和的数
+
+ */
 public class Code03_MSumToN {
 
 	public static boolean isMSum1(int num) {
@@ -18,6 +28,10 @@ public class Code03_MSumToN {
 		return false;
 	}
 
+	// num是不是2的某次方
+	// num二进制上只有一个1
+	// (num & (num -1)) == 0 是2的某次方
+	// (num & (num -1)) != 0 不是2的某次方
 	public static boolean isMSum2(int num) {
 		if (num < 3) {
 			return false;
